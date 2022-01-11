@@ -42,7 +42,6 @@ class Effect extends Card {
     }
 
     get stat(){
-        
         return this.stats == "power"?  "power" : "res"
     }
 
