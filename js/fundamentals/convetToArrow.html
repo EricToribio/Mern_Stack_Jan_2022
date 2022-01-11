@@ -47,12 +47,11 @@
             setBackgroundColorById("body", "white");
         }
         document.getElementById("paragraph2").onclick = () => {
-            setBackgroundColorById("paragraph2", document.getElementById('color-input').value)
+            setBackgroundColorById("paragraph2", getValueFromId("color-input"))
         }
         
-        getValueFromId = (id) => {
-            return document.getElementById(id).value;
-        }
+        getValueFromId = (id) =>  document.getElementById(id).value;
+        
         setBackgroundColorById = (id, color) => {
             document.getElementById(id).style = "background-color: " + color;
         }
