@@ -33,8 +33,8 @@ export default () => {
         const { name, value } = e.target;
         const random = {type:name, payload:value ,error :null}
         // console.log(name);
-        if (['firstName', 'lastName'].indexOf != -1) {
-            if (e.target.value.length <= 0) {
+        if (name == 'firstName' || name == 'lastName' ) {
+            if (value.length <= 0) {
                 dispatch({...random}
                 )}
             else if (value.length < 2) {
@@ -46,15 +46,10 @@ export default () => {
                 });
             }
         }
-        if ('email'.indexOf(name) != -1) {
+        if (name == 'email') {
             value.length <= 0 || validateEmail(value) ?
-                dispatch({
-                ...random
-                })
-                :
-                dispatch({
-                    ...random, error:"err"
-                });
+                dispatch({...random}):
+                dispatch({ ...random, error:"err"});
             
         }
     }
