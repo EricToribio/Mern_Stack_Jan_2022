@@ -21,11 +21,6 @@ const Tabs = props => {
     const onClickHandler = (e, value,id ) => {
         changeColor(id)
         setInput(value)
-        
-
-        
-        
-
     }
 
     return(
