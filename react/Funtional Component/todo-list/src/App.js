@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import TodoList from './components/ToDoList';
+import UserForm from './components/UserForm';
 
 function App() {
+  const [list , setList] = useState([])
+  
+  const updateList =( newTodo) => {
+// spread operator needs [] brackets
+    setList([...list, newTodo])
+  }
+
+    console.log(list)
+  
+  const newList = (list) => {
+    setList(list)
+  }
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="card col-5 mx-auto">
+      <UserForm 
+      listUpdate={updateList}/>
+      <TodoList 
+      todo = {list}
+      setNewList={newList}
+      />
     </div>
   );
 }
