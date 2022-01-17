@@ -2,44 +2,35 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const Pokemon = () => {
-    const [pokemonNames, setPokemonNames] = useState(false)
+    const [pokemonNames, setPokemonNames] = useState([])
     
-
-
     
     const onclickHandler =  () => {
 
         axios.get("https://pokeapi.co/api/v2/pokemon?offset=1&limit=807")
             .then(response => {
-                setPokemonNames(response.data)
+                setPokemonNames(response.data.results)
                 
             })
-
-
     }
 
-
-
-
-    if(pokemonNames){
     return (
         <div>
-
+                
+                <button onClick={onclickHandler}>Fetch pokemon</button>
             <div>
                 {
-                    pokemonNames.results.map((pokemon, idx) => {
+                    pokemonNames.map((pokemon, idx) => {
                         return (<p key={idx}>{pokemon.name}</p>)
                     })
                 }
             </div>
         </div>
-    )}else{
-        return(
-            <button onClick={onclickHandler}>Fetch pokemon</button>
+    )}
             
-        )
-    }
-}
+        
+    
+
 
 
 export default Pokemon
