@@ -18,12 +18,15 @@ const TodoList = props => {
         <div>
             {
                 newList.map((item, i) => {
+                    let style = ''
+                    item.completed && (style += "strike")
+                    console.log(item)
                     return(
-                        <div className="bordered bg-secondary text-white">
-                            <p key={i}>{item.task}</p>
-                            <label htmlFor="completed">Completed</label>
-                            <input key={i} type="checkbox"checked={item.completed} onChange={(e) => isComplete(i)} />
-                            <button key={i} onClick={(e) => {handleDelete(i)}}>Delete</button>
+                        <div className={`bordered bg-secondary text-white ${style}`}>
+                            <p className={`${style}`} key={i}>{item.task}</p>
+                            <label className={`${style}`} htmlFor="completed">Completed</label>
+                            <input  type="checkbox"checked={item.completed} onChange={(e) => isComplete(i)} />
+                            <button  onClick={(e) => {handleDelete(i)}}>Delete</button>
                         </div>)
                 })
             }

@@ -1,12 +1,10 @@
 import React,{useState} from "react";
 
-
 const UserForm = props => {
     const [todo, setTodo] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
 
         const newTask = {
             task : todo ,
