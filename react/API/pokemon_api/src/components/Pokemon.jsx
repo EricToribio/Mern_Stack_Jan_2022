@@ -18,7 +18,11 @@ const Pokemon = () => {
         <div>
             <button onClick={fetchPokemon}>Fetch pokemon</button>
             <div>
-                {pokemonNames.length > 0 && 
+                {pokemonNames.length > 0 && pokemonNames.map((pokemon, i) => {
+          return (
+            <p key={i} >{pokemon.name}</p>
+          
+          )})}
             </div>
         </div>
     )
