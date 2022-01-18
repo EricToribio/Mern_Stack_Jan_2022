@@ -28,7 +28,8 @@ const Display = () => {
         {
          (param === 'people' && !error  ) &&
             <div>
-                <h2>Height : {apiData.name}</h2>
+                <h1>{apiData.name}</h1>
+                <h2>Height : {apiData.height}</h2>
                 <h2>Mass : {apiData.mass}</h2>
                 <h2>Hair Color : {apiData.hair_color}</h2>
                 <h2>Skin Color : {apiData.skin_color}</h2>
@@ -36,6 +37,7 @@ const Display = () => {
 }{
             ( param === 'planets' && !error) &&
             <div>
+                <h1>{apiData.name}</h1>
                 <h2>Climate : {apiData.climate}</h2>
                 <h2>Terrain : {apiData.terrain}</h2>
                 <h2>Surface Water {apiData.surface_water}:</h2>
