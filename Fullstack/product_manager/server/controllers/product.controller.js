@@ -1,0 +1,13 @@
+const Product = require("../models/product.models")
+
+module.exports.addProduct = (req, res) => {
+    Product.create(req.body)
+    .then(newProduct => res.json({ product : newProduct }))
+    .catch(err => res.json({message: "Something went wrong", error: err  }))
+}
+
+module.exports.showAllProducts = (req, res) => {
+    Product.find()
+        .then(allProducts => res.json({product: allProducts}))
+        .catch(err => res.json({ message : 'Something went wrong', error : err}))
+}
