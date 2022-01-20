@@ -4,7 +4,7 @@ use my_first_db
 
 2. Create students collection.
 
-> db.createCollection('students')
+db.createCollection('students')
 
 3. Each document you insert into this collection should have the following format: ({name: STRING, home_state: STRING, lucky_number: NUMBER, birthday: {month: NUMBER, day: NUMBER, year: NUMBER}})
 
@@ -87,7 +87,7 @@ db.students.update({}, {'$set': {'number_of_belts': 0}}, false, true)
 18. Increment this field by 1 for all students in Washington (Seattle Dojo).
 
 db.students.updateMany({home_state: 'Washington'}, {$inc: {number_of_belts: 1}})
---- OR ---
+
 
 db.students.update({home_state: 'Washington'}, {$inc: {number_of_belts: 1}}, , {multi: true})
 
