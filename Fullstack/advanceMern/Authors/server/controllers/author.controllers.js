@@ -1,31 +1,31 @@
-//const Product = require("../models/product.models")
+const Authors = require("../models/authors.model")
 //change names to fit current project
-//module.exports.addProduct = (req, res) => {
-    Product.create(req.body)
-    .then(newProduct => res.json({ product : newProduct }))
-    .catch(err => res.json({message: "Something went wrong", error: err  }))
+module.exports.addAuthors = (req, res) => {
+    Authors.create(req.body)
+        .then(newAuthor => res.json({  Author : newAuthor }))
+        .catch(err => res.status(400).json(err))
 }
 
-//module.exports.showAllProducts = (req, res) => {
-    Product.find()
-        .then(allProducts => res.json({product: allProducts}))
+module.exports.showAllAuthors = (req, res) => {
+    Authors.find().sort({"name" : 1})
+        .then(allAuthors => res.json({  Author : allAuthors}))
         .catch(err => res.json({ message : 'Something went wrong', error : err}))
 }
 
-//module.exports.showOneProduct = (req , res) => {
-    Product.findOne( {_id:  req.params.id} )
-    .then(oneProduct => res.json({product : oneProduct}))
-    .catch(err => res.json({message : "Something went wrong", error : err}))
+module.exports.showOneAuthor = (req , res) => {
+    Authors.findOne( {_id:  req.params.id} )
+        .then(oneAuthor => res.json( { Author : oneAuthor }))
+        .catch(err => res.json({message : "Something went wrong", error : err}))
 }
 
-//module.exports.updateExistingProduct = ( req , res ) => {
-    Product.findOneAndUpdate( {_id : req.params.id}, req.body, { new : true })
-    .then(updatedProduct => res.json({ product : updatedProduct }))
-    .catch(err => res.json({ message : "Something went wrong ", error : err }))
+module.exports.updateExistingAuthor = ( req , res ) => {
+    Authors.findOneAndUpdate( {_id : req.params.id}, req.body, { new : true, runValidators : true  })
+        .then(updateAuthor => res.json({  Author : updateAuthor }))
+        .catch(err => res.status(400).json(err))
 }
 
-//module.exports.deleteProduct = (req, res) => {
-    Product.deleteOne( {_id : req.params.id})
-    .then(result => res.json({ result : result }))
-    .catch(err => res.json({ message : "Something went wrong ", error : err }))
+module.exports.deleteAuthor = (req, res) => {
+    Authors.deleteOne( {_id : req.params.id})
+        .then(result => res.json({ result : result }))
+        .catch(err => res.json({ message : "Something went wrong ", error : err }))
 }

@@ -10,7 +10,7 @@ app.use(express.json()); // This is new
 app.use(express.urlencoded({ extended: true })); // This is new
 
 //replace with project names
-//const AllMyProductRoutes = require("./server/routes/product.routes")
-//AllMyProductRoutes(app)
-//require('./server/routes/product.routes')(app); 
-app.listen(port, () => console.log(`Listening on port: port`) );
+const AllMyAuthorsRoutes = require("./server/routes/author.routes")
+AllMyAuthorsRoutes(app)
+require('./server/routes/author.routes')(app); 
+app.listen(port, () => console.log(`Listening on port: ${port}`) );

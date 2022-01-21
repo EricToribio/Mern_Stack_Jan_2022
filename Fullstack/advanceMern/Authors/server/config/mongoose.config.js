@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-//change names to cureent project
-//mongoose.connect('mongodb://localhost/product_manager', {
+//change names to current project
+mongoose.connect('mongodb://localhost/authors', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

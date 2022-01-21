@@ -1,11 +1,15 @@
 const  mongoose = require("mongoose")
 //change names to fit project
-//const ProductSchema = new mongoose.Schema({
-    title : String,
-    price : Number,
-    description : String
-})
+const AuthorsSchema = new mongoose.Schema({
+    name : {
+        type : String,
+        required : [
+            true ,
+            "Name is required"
+        ]
+    }
+},{ timestamps : true})
 
-//const Product = mongoose.model("Product", ProductSchema)
+const Authors = mongoose.model("Authors", AuthorsSchema)
 
-//module.exports = Product
+module.exports = Authors

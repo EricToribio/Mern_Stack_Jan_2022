@@ -1,9 +1,9 @@
-//const ProductController = require('../controllers/product.controller')
-replace names for current project
-//module.exports = app => {
-    app.post("/api/product/new", ProductController.addProduct)
-    app.get("/api/product", ProductController.showAllProducts)
-    app.get("/api/product/:id" , ProductController.showOneProduct)
-    app.put("/api/product/update/:id" , ProductController.updateExistingProduct)
-    app.delete("/api/product/delete/:id" , ProductController.deleteProduct)
+const AuthorsController = require('../controllers/author.controllers')
+
+module.exports = app => {
+    app.post("/api/authors/new", AuthorsController.addAuthors)
+    app.get("/api/authors", AuthorsController.showAllAuthors)
+    app.get("/api/authors/:id" , AuthorsController.showOneAuthor)
+    app.put("/api/authors/update/:id" , AuthorsController.updateExistingAuthor)
+    app.delete("/api/authors/delete/:id" , AuthorsController.deleteAuthor)
 }
