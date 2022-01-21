@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 const UpdateProducts = () => {
     const [title, setTitle] = useState()
     const [price, setPrice] = useState()
-    const [description, setDescription] = useState("")
+    const [description, setDescription] = useState()
     const { id } = useParams()
     const history = useHistory()
     const apiCall = `http://localhost:8000/api/product/` + id

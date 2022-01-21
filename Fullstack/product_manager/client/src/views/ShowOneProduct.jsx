@@ -43,7 +43,7 @@ const ShowOneProduct = () => {
                     <h2>{oneProduct.title}</h2>
                     <h4>{oneProduct.price}</h4>
                     <h4>{oneProduct.description}</h4>
-                    <div className='d-flex'>
+                    <div className='d-flex mx-auto'>
                     <button className='btn btn-warning' onClick={(e) => onEditHandler()}>Edit</button>
                     <button className='btn btn-danger' onClick={(e) => handleDelete()}>Delete</button>
                     </div>
@@ -55,3 +55,5 @@ const ShowOneProduct = () => {
 }
 
 export default ShowOneProduct;
+
+rs
