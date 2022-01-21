@@ -35,12 +35,9 @@ const UpdateProducts = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        !title ?
-        setTitle(oneProduct.title):
-        !price ?
-        setPrice(oneProduct.price):
-        !description ?
-        setDescription(oneProduct.description):
+        !title && setTitle(oneProduct.title)
+        !price && setPrice(oneProduct.price)
+        !description && setDescription(oneProduct.description)
         axios.put(`http://localhost:8000/api/product/update/${id}`, {
             title: title,
             price: price,
