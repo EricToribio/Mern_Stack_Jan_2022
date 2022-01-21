@@ -10,11 +10,7 @@ const ProductForm = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        // const newProduct ={
-        //     title : title,
-        //     price : price,
-        //     description : description
-        // }
+        
         axios.post("http://localhost:8000/api/product/new",{
                 title :title,
                 price  : price,
@@ -40,7 +36,7 @@ const ProductForm = () => {
                     <label htmlFor="description">Description</label>
                     <input type="text" name="description" onChange={(e) => setDescription(e.target.value)} />
                 </div>
-                <button>Submit</button>
+                <button disabled={!title || price < 1  || !description}>Submit</button>
             </form>
         </div>
     )

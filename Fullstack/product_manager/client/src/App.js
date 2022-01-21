@@ -5,13 +5,24 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import ProductForm from './components/ProductForm';
+
+import Main from './views/Main';
+
+import ShowOneProduct from './views/ShowOneProduct';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <ProductForm/>
+      <Switch>
+      <Route exact path="/">
+      <Main/>
+      </Route>
+        <Route exact path="/:id">
+        <ShowOneProduct/>
+        </Route>
+      </Switch>
+      
       
       </BrowserRouter>
     
