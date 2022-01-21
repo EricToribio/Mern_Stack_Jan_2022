@@ -9,6 +9,7 @@ import {
 import Main from './views/Main';
 
 import ShowOneProduct from './views/ShowOneProduct';
+import UpdateProducts from './components/UpdateProducts';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       </Route>
         <Route exact path="/:id">
         <ShowOneProduct/>
+        </Route>
+        <Route exact path="/:id/edit">
+          <UpdateProducts/>
         </Route>
       </Switch>
       
