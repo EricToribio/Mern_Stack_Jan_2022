@@ -7,7 +7,6 @@ import DeleteButton from "./DeleteButton";
 const PlayersList = () => {
     const [ players, setPlayers] = useState([])
     const history = useHistory()
-    const [deleteData , setDeleteData] = useState()
     const removeFromDom = playerId => {
         setPlayers(players.filter(players => players._id != playerId))
     }
@@ -18,7 +17,7 @@ const PlayersList = () => {
         } ).catch(err => {
             console.log(err)
         })
-    },[deleteData])
+    },[])
     
     return(
         

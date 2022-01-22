@@ -12,16 +12,7 @@ const UpdateProducts = () => {
     const apiCall = `http://localhost:8000/api/product/` + id
     const [oneProduct, setOneProduct] = useState()
 
-    // useEffect(() => {
-    //     axios.get(apiCall)
-    //         .then(response => {
-    //             setTitle(response.data.product.title)
-    //             setPrice(response.data.product.price)
-    //             setDescription(response.data.product.description)
-    //         }).catch(err => {
-    //             console.log(err)
-    //         }, [])
-    // })
+    
     useEffect(() => {
         console.log("test")
         axios.get(apiCall)
