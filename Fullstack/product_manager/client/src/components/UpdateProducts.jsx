@@ -40,11 +40,6 @@ const UpdateProducts = () => {
         history.push(`/${id}`)
     }
     
-   
-    
-    
-
-
 
 
     return (
