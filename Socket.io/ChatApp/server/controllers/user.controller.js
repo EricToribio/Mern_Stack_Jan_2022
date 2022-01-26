@@ -46,6 +46,12 @@ class UserController {
             .catch(err=> res.json(err))
 
     }
+
+    showOneUser (req , res) {
+        User.findOne( {_id:  req.params.id} )
+            .then(oneUser => res.json( { User : oneUser}))
+            .catch(err => res.json({message : "Something went wrong", error : err}))
+    }
 }
 
 

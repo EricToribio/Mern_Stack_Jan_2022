@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -8,10 +8,11 @@ import {
 import UserView from './views/UserView';
 import Login from './components/Login';
 import Register from './components/Register';
-import Dashboard from './components/Dashboard';
+import Dashboard from './views/Dashboard';
+import { RoomsView } from './views/RoomsView';
+
 function App() {
   return (
-    <div className="App">
     <BrowserRouter>
     <Switch>
       <Route exact path="/">
@@ -20,18 +21,20 @@ function App() {
       </UserView>
       </Route>
       <Route exact path="/register">
-        <UserView>
-          <Register/>
-        </UserView>
+      <UserView>
+        <Register/>
+      </UserView>
       </Route>
       <Route exact path="/DashBoard">
-        <UserView>
           <Dashboard/>
-        </UserView>
       </Route>
+      <Route exact path="/:room/:id">
+        <RoomsView/>
+        </Route>
     </Switch>
     </BrowserRouter>
-    </div>
+    
+  
   );
 }
 

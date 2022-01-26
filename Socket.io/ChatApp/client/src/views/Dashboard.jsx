@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import RoomsForm from '../components/RoomsForm';
+import AllChatRooms from '../components/AllChatRooms';
+;
 
 
 
 const Dashboard = () => {
     const [loggedinuser, setLoggedInUser] = useState({})
+    const [newRoom, setNewRoom] = useState("")
     const history = useHistory()
+
 
 
     useEffect(()=>{
@@ -20,9 +25,14 @@ const Dashboard = () => {
                 console.log("errorrrrrr",err)
             })
     }, [])
+
+
+    
+    
     return (
         <div>
-            <h1>Welcome, {loggedinuser.username} you made it to the dashboard!</h1>
+            <RoomsForm SetNewRoom={setNewRoom}/>
+            <AllChatRooms newRoom={newRoom} loggedinuser={loggedinuser}/>
         </div>
     );
 };
