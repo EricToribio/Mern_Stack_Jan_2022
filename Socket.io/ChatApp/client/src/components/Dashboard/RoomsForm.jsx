@@ -9,7 +9,7 @@ import React, { useState } from 'react';
         e.preventDefault()
         axios.post('http://localhost:8000/api/chatroom/new',{
             name : input,
-            chats : ""
+            chats : []
         })
         .then(response =>{
             setNewRoom(input)
@@ -26,16 +26,16 @@ import React, { useState } from 'react';
     }
 
     return (
-        <div>
+        <div className='d-flex justify-content-center text-center'>
             <form onSubmit={onSubmitHandler}>
             {errors.map((err, index) => <p key={index}>{err}</p>)}
-                <div>
-                    <label htmlFor="roomName">Enter RoomName :</label>
-                    <input type="text" autoComplete='off' value={input}
+                <div className='form-group'>
+                    <label className='form-label' htmlFor="roomName">Enter New Room Name </label>
+                    <input className='form-control' type="text" autoComplete='off' value={input}
                         onChange={(e) => setInput(e.target.value)} />
                 </div>
-                <div>
-                    <button>Submit</button>
+                <div className='mt-3'>
+                    <button className='btn btn-warning'>Submit</button>
                 </div>
 
             </form>

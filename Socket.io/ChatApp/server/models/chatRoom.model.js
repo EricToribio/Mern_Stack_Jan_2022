@@ -8,7 +8,7 @@ const ChatRoomSchema = new mongoose.Schema({
             "Name is required"
         ]   
     },
-    chats : String
+    chats : Array
 },{ timestamps : true})
 
 const ChatRoom = mongoose.model("ChatRoom", ChatRoomSchema)

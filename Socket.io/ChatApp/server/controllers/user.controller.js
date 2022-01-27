@@ -47,10 +47,9 @@ class UserController {
 
     }
 
-    showOneUser (req , res) {
-        User.findOne( {_id:  req.params.id} )
-            .then(oneUser => res.json( { User : oneUser}))
-            .catch(err => res.json({message : "Something went wrong", error : err}))
+    logout(req, res)  {
+        res.clearCookie('usertoken');
+        res.sendStatus(200);
     }
 }
 

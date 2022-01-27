@@ -1,51 +1,51 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import io from 'socket.io-client';
-import ChatForm from '../components/ChatForm';
-import { Chatrooms } from '../components/Chatrooms';
+import ChatForm from '../components/ChatRoom/ChatForm';
+import { Chatrooms } from '../components/ChatRoom/Chatrooms';
 
 export const RoomsView = () => {
-  const {room , id} = useParams()
-  const [user,setUser] = useState()
-  const [chatroom, setChatRoom] = useState()
-  const [chats, setChats] = useState([])
+  const {room } = useParams()
   const [socket] = useState(() => io(":8000"))
+  const [loggedinuser, setLoggedInUser] = useState({})
+  const [msg, setMsg] = useState([])
+  const history = useHistory()
+  
 
-  useEffect(() => {
-    socket.on("post chat",async msg =>{
-      await setChats(prevmsgs => {return [...prevmsgs,msg]})
-    })
-
-    return ()=> socket.disconnect(true)
-
-  },[socket])
-
-  useEffect(()=>{
-    axios.get(`http://localhost:8000/api/user/${id}`)
+  useEffect (() => {
+    socket.emit('join_room', room)
+    axios.get("http://localhost:8000/api/users/getloggedinuser", {withCredentials:true})
         .then(res=>{
-          setUser(res.data.User)
-          console.log(res.data)
+            setLoggedInUser(res.data)
         })
         .catch(err=> {
+            history.push("/")
             console.log("errorrrrrr",err)
         })
-}, [])
-
-  useEffect(() => {
-    axios.get(`http://localhost:8000/api/chatroom/${room}`)
+        axios.get(`http://localhost:8000/api/chatroom/${room}`)
     .then(response => {
-      setChatRoom(response.data.ChatRoom)
+      setMsg(response.data.ChatRoom.chats)
+      console.log(response.data.ChatRoom)
     })
     .catch(err => {
       console.log(err)
     })
-  })
+  },[])
+  
+  useEffect(async ()  => {
+    await socket.on('receive_message', ( data ) => {
+      console.log(data)
+      setMsg( (msg) => [...msg,data])
+      console.log(msg,'2')
+    })
+  },[socket]) 
+
   return (
-    <div>
-      <h1></h1>
-      <Chatrooms chats={chats}/>
-      <ChatForm socket={socket} user={user}/>
+    <div className='bg-secondary bg'>
+      <h1 className='text-center p-3'>Welcome {loggedinuser.username}</h1>
+      <Chatrooms msg={msg} username={loggedinuser.username}/>
+      <ChatForm msg={msg} setMsg={setMsg} room={room}  socket={socket} loggedinuser={loggedinuser}/>
     </div>
   )
 };

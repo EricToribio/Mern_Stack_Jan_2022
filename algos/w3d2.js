@@ -32,12 +32,34 @@ const users = [
   ];
   
   
-  function findObjects(criteria, collection) {
+  
     // Given a criteria object and items
     // Finds the objects that match the given search criteria.
     //return any object that matches all the key value pairs in the search criteria object.
+    function findObjects(criteria, collection) {
+      let matches = [];
+      for(const obj of collection){
+        let isFound = true;
+        for(const key in criteria){
+          if(isFound && obj.hasOwnProperty(key)){
+            if(obj[key]!==criteria[key]){
+              isFound=false;
+            }
+          }
+          else{
+            isFound=false;
+          }
+        }
+        if(isFound){
+          matches.push(obj)
+        }
+      }
+      return matches
+    }
+    
+    console.log(findObjects(searchCriteria1, users))
+    console.log(findObjects(searchCriteria2, items))
   
-  }
   
   function findObjectsFunctional(criteria, collection) {}
   /* 

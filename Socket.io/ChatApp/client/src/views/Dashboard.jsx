@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import RoomsForm from '../components/RoomsForm';
-import AllChatRooms from '../components/AllChatRooms';
-;
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import RoomsForm from '../components/Dashboard/RoomsForm'
+import AllChatRooms from '../components/Dashboard/AllChatRooms'
+
 
 
 
@@ -30,7 +30,7 @@ const Dashboard = () => {
     
     
     return (
-        <div>
+        <div className='bg-secondary bg' >
             <RoomsForm SetNewRoom={setNewRoom}/>
             <AllChatRooms newRoom={newRoom} loggedinuser={loggedinuser}/>
         </div>

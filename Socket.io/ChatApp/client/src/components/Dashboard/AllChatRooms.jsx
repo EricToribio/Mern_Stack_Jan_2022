@@ -25,15 +25,19 @@ const AllChatRooms = ({newRoom ,loggedinuser}) => {
     },[newRoom])
     
   return (
-  <div>{errors.map((err, index) => <p key={index}>{err}</p>)}
+  <div className='text-center mt-3'>{errors.map((err, index) => <p key={index}>{err}</p>)}
+  <h2>Choose A Room</h2>
+  <div>
+
         {
             chatRooms.map((room,i) =>{
                 return(
-                <div>
-                    <Link to={`/${room._id}/${loggedinuser._id}`}>{room.name}</Link>
+                <div className='my-3'>
+                    <Link to={`/${room._id}`} className='btn btn-success mx-3'>{room.name}</Link>
                 </div>
             )})
         }
+  </div>
   </div>
   );
 };
