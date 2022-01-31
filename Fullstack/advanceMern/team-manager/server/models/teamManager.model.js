@@ -9,7 +9,8 @@ const TeamManagerSchema = new mongoose.Schema({
         ]
     },
     preferredPosition : String,
-    playerStatus : String
+    playerStatus : Object,
+
 
 
 })
